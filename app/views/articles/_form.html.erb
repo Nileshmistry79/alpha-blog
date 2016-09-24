@@ -8,23 +8,40 @@
 
 <% end %>
 
-
-<%= form_for @article do |f| %>
-
-<p>
-  <%=f.label :title  %> <br/>
-  <%=f.text_field :title  %>
-</p>
-
-<p>
-  <%=f.label :desc  %> <br/>
-  <%=f.text_area :desc  %>
-</p>
-
-
-<%= f.submit %> 
-
-<%= link_to "<<Back to List", articles_path%>
+<div class="row">
+    <%= form_for(@article, :html => {class:"form-horizontal", role: "form"}) do |f| %>
+  <div class="col-xs-12">
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%=f.label :title  %> 
+      </div>
+      <div class="col-sm-8">
+        <%=f.text_field :title,  class:"form-control", placeholder:"Tile of the Article", autofocus: true %>
+      </div>  
+    </div>
+ 
 
 
+    <div class="form-group">
+      <div class="control-label col-sm-2">
+        <%=f.label :desc  %> 
+      </div>
+      <div class="col-sm-8">  
+        <%=f.text_area :desc, class:"form-control", rows:10, placeholder:"Descirption of  Article", autofocus: false%>
+      </div>  
+    </div>
+  </div>
+<div class="form-group">  
+  <div class="col-sm-offset-2 col-sm-2">
+    <%= f.submit  class: "btn bt-primary btn-lg" %> 
+  </div>
+</div>
 <% end %>
+
+  <div class="col-xs-4 col-xs-offset-4">
+    [ <%= link_to "Cancel <<Back to List", articles_path%> ]
+  </div>
+
+
+</div>
+</div>
