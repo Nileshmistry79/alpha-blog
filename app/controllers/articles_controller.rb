@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
   
   def new
     @article=Article.new
-    
   end   
   
   
@@ -27,8 +26,6 @@ class ArticlesController < ApplicationController
   
   
   def update
-    
-    
     if @article.update(parm_method)
       flash[:success] = "New Article is UPDATED"
       redirect_to article_path(@article)
@@ -39,12 +36,11 @@ class ArticlesController < ApplicationController
     
   
   def show
-    @article=Article.find(params[:id])
+    
   end  
   
   
   def destroy
-   
     @article.destroy
     flash[:danger]="Articles is removed"
     redirect_to articles_path
