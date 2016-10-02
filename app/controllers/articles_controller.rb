@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     
   
   def create
-    #render plain: params[:article].inspect
+    
     @article=Article.new(parm_method)
     @article.user=current_user
     if @article.save
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     end 
     
     def require_user_same
-      if current_user != @article.user
+      if current_user != @article.user and !current_user.admin?
         flash[:danger]="you can only edit/delete your own article"
         redirect_to root_path
       end  
