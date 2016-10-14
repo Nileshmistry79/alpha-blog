@@ -14,7 +14,9 @@
               <small>Last Updated : <%=time_ago_in_words(myarticle.updated_at) %> ago </small>
         </div>              
       </div>
-
+      <% if myarticle.categories.any? %>
+          <p> categories: <%= render myarticle.categories %></p>
+      <% end %>  
       <% if logged_in? && (current_user==myarticle.user || current_user.admin?) %>
       <div class="article-actions">
         <%= link_to "Edit this article", edit_article_path(myarticle), class: "btn btn-xs btn-primary" %>
